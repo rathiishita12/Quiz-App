@@ -75,7 +75,10 @@ QuizApp/
 - **Contact:** rathiishita24@gmail.com
 
 ## Screenshots
-![alt text](<Screenshots/Screenshot 2025-09-05 at 6.43.28 AM.png>)
-![alt text](<Screenshots/Screenshot 2025-09-05 at 6.43.45 AM.png>)
-![alt text](<Screenshots/Screenshot 2025-09-05 at 6.44.07 AM.png>)
-![alt text](<Screenshots/Screenshot 2025-09-05 at 6.44.12 AM.png>)
+<img width="1470" height="956" alt="Screenshot 2025-09-05 at 6 43 28 AM" src="https://github.com/user-attachments/assets/b9db7ebe-1ed9-4aca-bf7d-a4cadc171569" />
+<img width="1470" height="956" alt="Screenshot 2025-09-05 at 6 43 45 AM" src="https://github.com/user-attachments/assets/69d92670-06be-447e-8dca-57fe9d5b5603" />
+<img width="1470" height="956" alt="Screenshot 2025-09-05 at 6 44 12 AM" src="https://github.com/user-attachments/assets/1eab44c5-9e4b-4047-b1e3-7a82710d878d" />
+<img width="1470" height="956" alt="Screenshot 2025-09-05 at 6 44 07 AM" src="https://github.com/user-attachments/assets/06f240b5-b126-4341-a31a-46f4808f6f82" />
+
+
+Thank you for reviewing my submission! For any questions, feel free to contact me.
