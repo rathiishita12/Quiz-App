@@ -39,7 +39,8 @@ function App() {
 
     const savedState = localStorage.getItem("quizState");
     if (savedState) {
-      const { currentIndex, userAnswers, timeLefts, darkMode } = JSON.parse(savedState);
+      const { currentIndex, userAnswers, timeLefts, darkMode } =
+        JSON.parse(savedState);
 
       setCurrentIndex(currentIndex);
       setUserAnswers(userAnswers);
@@ -61,7 +62,8 @@ function App() {
     }
   }, []);
 
-  // Persist quiz state (current index, answers, timers, theme) to localStorage on related state changes
+  // Persist quiz state (current index, answers, timers, theme) to localStorage
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     localStorage.setItem(
       "quizState",
@@ -69,54 +71,43 @@ function App() {
     );
   }, [currentIndex, userAnswers, timeLefts, darkMode]);
 
-  // Manage timer and question focus, runs on currentIndex, showResults, or question list change
+  // Manage timer and question focus
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // If quiz ended or questions not loaded, clear timer to avoid leaks
     if (showResults || questions.length === 0) {
       clearInterval(timerRef.current);
       return;
     }
 
-    // Clear any existing timer before starting a new one
     clearInterval(timerRef.current);
 
-    // If timer for this question is zero, auto-move to next question immediately
     if (timeLefts[currentIndex] === 0) {
       handleNext(true, selectedOptionRef.current);
       return;
     }
 
-    // Setup interval timer that ticks every second
     timerRef.current = setInterval(() => {
       setTimeLefts((prev) => {
         const newTimes = [...prev];
-
-        // Only decrement if time is remaining
         if (newTimes[currentIndex] > 0) {
           newTimes[currentIndex] -= 1;
         }
-
-        // When timer hits zero, clear interval and auto-submit current answer
         if (newTimes[currentIndex] === 0) {
           clearInterval(timerRef.current);
           handleNext(true, selectedOptionRef.current);
         }
-
         return newTimes;
       });
     }, 1000);
 
-    // Load previously saved answer for current question, if any
     setSelectedOption(userAnswers[currentIndex] ?? null);
-
-    // Move keyboard focus to question container for accessibility
     questionRef.current?.focus();
 
-    // Cleanup function to clear timer when component unmounts or effect reruns
     return () => clearInterval(timerRef.current);
   }, [currentIndex, showResults, questions.length]);
 
   // Calculate the user's total correct answers
+  // eslint-disable-next-line no-unused-vars
   const calculateScore = (answers) => {
     return answers.reduce((acc, answer, idx) => {
       if (idx < questions.length && answer === questions[idx].answer) {
@@ -126,17 +117,15 @@ function App() {
     }, 0);
   };
 
-  // Handle when user selects an option; disabled if timer expired on this question
+  // Handle when user selects an option
   const handleOptionSelect = (option) => {
     if (timeLefts[currentIndex] > 0) {
       setSelectedOption(option);
     }
   };
 
-  // Handles moving to next question, triggered manually or auto on timer expiry
-  // `auto` = true means triggered by timer expiry, passing selected option explicitly
+  // Handle moving to next question
   const handleNext = (auto = false, selectedOpt) => {
-    // If manual next and no option selected, do nothing to block move
     if (!auto && selectedOption === null) return;
 
     const answer = auto ? selectedOpt ?? null : selectedOption ?? null;
@@ -155,17 +144,17 @@ function App() {
     }
   };
 
-  // Handle going to previous question, blocked if previous question's timer hit zero (locked)
+  // Handle going to previous question
   const handlePrevious = () => {
     if (currentIndex > 0 && timeLefts[currentIndex - 1] > 0) {
       setCurrentIndex(currentIndex - 1);
     }
   };
 
-  // Toggle theme between dark and light modes
+  // Toggle theme
   const toggleTheme = () => setDarkMode(!darkMode);
 
-  // Restart the quiz - reset all states and clear localStorage
+  // Restart the quiz
   const handleRestart = () => {
     setCurrentIndex(0);
     setSelectedOption(null);
@@ -175,13 +164,10 @@ function App() {
     localStorage.removeItem("quizState");
   };
 
-  // Show loading if questions have not loaded yet
   if (questions.length === 0) return <div>Loading...</div>;
 
-  // Main render
   return (
     <div className={`app ${darkMode ? "dark" : "light"}`}>
-      {/* Header with theme toggle */}
       <header className="app-header">
         <button
           onClick={toggleTheme}
@@ -194,7 +180,6 @@ function App() {
 
       {showResults ? (
         <>
-          {/* Results page */}
           <h1>Quiz Results</h1>
           <Results
             questions={questions}
@@ -204,16 +189,13 @@ function App() {
         </>
       ) : (
         <main role="main" aria-live="polite">
-          {/* Quiz active state */}
           <h1>Quiz App</h1>
           <ProgressBar current={currentIndex + 1} total={questions.length} />
 
-          {/* Question progress info */}
           <div className="progress" aria-live="polite" aria-atomic="true">
             Question {currentIndex + 1} of {questions.length}
           </div>
 
-          {/* Timer display */}
           <div className="status">
             <span
               className="timer"
@@ -225,7 +207,6 @@ function App() {
             </span>
           </div>
 
-          {/* Question and Options, fade-in animation */}
           <div key={currentIndex} className="fade-in">
             <Question
               ref={questionRef}
@@ -240,7 +221,6 @@ function App() {
               disabled={timeLefts[currentIndex] === 0}
             />
 
-            {/* Navigation buttons */}
             <div className="navigation">
               <button
                 onClick={handlePrevious}
@@ -258,7 +238,9 @@ function App() {
               <button
                 className="next-btn"
                 onClick={() => handleNext(false)}
-                disabled={selectedOption === null || timeLefts[currentIndex] === 0}
+                disabled={
+                  selectedOption === null || timeLefts[currentIndex] === 0
+                }
               >
                 {currentIndex + 1 === questions.length ? "Finish" : "Next"}
               </button>
