@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# React Quiz App – Timed Questions & Difficulty Levels
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a professional React-based quiz application featuring:
+- Timed questions
+- Difficulty indication for each question
+- Next/Previous navigation
+- Results page showing user answers, correct answers, and your total score
+- Dark/Light theme toggle for better accessibility and user comfort
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Timer:** Each question has a 30-second countdown and auto-submits when time runs out.
+- **Difficulty Display:** Difficulty level (Easy, Medium, Hard) shown with each question.
+- **Navigation:** Move through the quiz using Next and Previous buttons; Previous is disabled if a question's timer expired.
+- **Answer Selection:** Choose one option per question. Your answer is submitted automatically on timer expiry or when you click Next.
+- **Results Page:** Displays your final score and shows a side-by-side comparison of your answer and the correct answer for each question.
+- **Theme Toggle:** Instantly switch between light and dark UI modes.
+- **Accessibility:** Keyboard friendly, focus indicators, and screen-reader support.
+- **Persistent State:** Quiz progress is saved in localStorage, so refreshing the page retains your answers and timers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation & Running
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone or download/unzip the project folder**
+2. In terminal, navigate to the project directory:
+cd QuizApp
+3. **Install dependencies:**
+npm install
+4. **Start development server:**
+npm start
+The app will open in your browser on [http://localhost:3000](http://localhost:3000).
 
-### `npm test`
+5. **Build for production (optional):**
+npm run build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Use
 
-### `npm run build`
+- Click an option to select your answer for each question.
+- Use Next to go forward, Previous to go back (if allowed).
+- Timer auto-submits selection after 30 seconds.
+- Toggle dark/light mode using the button at the top-right.
+- At the end, review your results and score. Click “Restart Quiz” to begin anew.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## File Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+QuizApp/
+├── src/
+│   ├── App.js
+│   ├── App.css
+│   ├── components/
+│   │   ├── Question.js
+│   │   ├── Options.js
+│   │   ├── Results.js
+│   │   ├── ProgressBar.js
+│   ├── data/
+│   │   └── questions.json
+├── public/
+├── package.json
+├── README.md
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### - `src/App.js`: Controls main quiz logic, navigation, timer, localStorage, theme
+#### - `src/components/`: All UI subcomponents for modular, clean code
+#### - `src/data/questions.json`: Stores questions and their difficulty levels
+#### - `src/App.css`: Responsive styles and accessibility
 
-### `npm run eject`
+## Accessibility & Notes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Keyboard navigation and ARIA attributes included.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Author & Submission
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Name:** Ishita Rathi
+- **Date:** 05/09/2025
+- **Contact:** rathiishita24@gmail.com
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+![alt text](<Screenshots/Screenshot 2025-09-05 at 6.43.28 AM.png>)
+![alt text](<Screenshots/Screenshot 2025-09-05 at 6.43.45 AM.png>)
+![alt text](<Screenshots/Screenshot 2025-09-05 at 6.44.07 AM.png>)
+![alt text](<Screenshots/Screenshot 2025-09-05 at 6.44.12 AM.png>)
