@@ -11,11 +11,19 @@ const Options = ({ options, selectedOption, handleSelect, disabled }) => {
     <div className="options" role="list">
       {options.map((option) => (
         <button
+<<<<<<< HEAD
+=======
+          role="listitem"
+>>>>>>> fc64094c8d3593ffcfbe7531fad9eb87ff3095ce
           key={option} // unique key for each option
           onClick={() => handleSelect(option)} // handle user selection
           disabled={disabled} // disable button when needed
           className={selectedOption === option ? "selected" : ""} // highlight if selected
+<<<<<<< HEAD
           aria-pressed={selectedOption === option} // valid since it's a button
+=======
+          aria-pressed={selectedOption === option} // accessibility: indicates active state
+>>>>>>> fc64094c8d3593ffcfbe7531fad9eb87ff3095ce
           tabIndex={0}
           aria-label={`Answer option: ${option}`} // accessibility label
         >
